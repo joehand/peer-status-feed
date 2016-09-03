@@ -1,0 +1,21 @@
+{
+  "name": "peer-status-feed",
+  "version": "1.0.0",
+  "description": "Share a status feed and subscribe to peer feeds.",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard"
+  },
+  "author": "Joe Hand <joe@hand.email> (https://joeahand.com/)",
+  "license": "MIT",
+  "dependencies": {
+    "hypercore": "^4.10.0",
+    "hyperdrive-archive-swarm": "^4.1.2",
+    "level-party": "^3.0.4",
+    "os-homedir": "^1.0.1",
+    "thunky": "^1.0.1"
+  },
+  "devDependencies": {
+    "memdb": "^1.3.1"
+  }
+}
