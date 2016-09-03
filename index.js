@@ -49,11 +49,14 @@ PeerStatus.prototype._open = function (cb) {
       }
       return self.db.put('!peerstatus!!user', keys, done)
     }
-    if (!self._feed.blocks) return done()
-    self._feed.get(0, function (err, data) {
+    self._feed.open(function (err) {
       if (err) return cb(err)
-      self.status = JSON.parse(data.toString())
-      done()
+      if (!self._feed.blocks) return done()
+      self._feed.get(0, function (err, data) {
+        if (err) return cb(err)
+        self.status = JSON.parse(data.toString())
+        done()
+      })
     })
 
     function done () {

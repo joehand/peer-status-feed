@@ -39,7 +39,7 @@ opens database and hypercore feeds.
 
 If an existing user is in database, it will also connect to existing friend feeds.
 
-### user.appendStatus(data, cb)
+### user.appendStatus(data, [cb])
 
 Append a status update to the feed. Data can be any object to be json serialized.
 
