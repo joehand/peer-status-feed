@@ -6,6 +6,8 @@ Share your status with friends! Whenever something consequential happens, the us
 
 The user can update their own feed with status updates (i.e. arbitrary data). The user can also subscribe to friends' feeds. Social!
 
+Need a friend to test peer-status-feed with? [Peer robot](https://github.com/joehand/peer-robot) is a friend that can beep and boop status updates to you!
+
 ## Installation 
 
 ```

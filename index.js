@@ -26,6 +26,10 @@ function PeerStatus (opts) {
   function open (cb) {
     self._open(cb)
   }
+
+  self._emitError = function (err) {
+    if (err) self.emit('error', err)
+  }
 }
 
 util.inherits(PeerStatus, events.EventEmitter)
@@ -64,6 +68,7 @@ PeerStatus.prototype._open = function (cb) {
 
 PeerStatus.prototype.appendStatus = function (data, cb) {
   var self = this
+  cb = cb || self._emitError
   self._feed.append(JSON.stringify(data), function (err) {
     if (err) return cb(err)
     self.status = data
