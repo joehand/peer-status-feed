@@ -24,6 +24,8 @@ On connection, it automatically connects to old friends (like the good old days)
 
 See `example.js` for example.
 
+Check out [are-you-around](https://github.com/joehand/are-you-around) and [peer-robot](https://github.com/joehand/peer-robot) to see how to use it to make apps and robots.
+
 ## API
 
 ### var user = PeerStatus(opts)
