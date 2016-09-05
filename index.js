@@ -3,8 +3,6 @@ var path = require('path')
 var util = require('util')
 var hypercore = require('hypercore')
 var createSwarm = require('hyperdrive-archive-swarm')
-var level = require('level-party')
-var homeDir = require('os-homedir')
 var thunky = require('thunky')
 
 module.exports = PeerStatus
@@ -19,8 +17,8 @@ function PeerStatus (opts) {
   self.status = null
   self.open = thunky(open)
 
-  var dbDir = path.join(opts.home || homeDir(), '.peer-status.db')
-  self.db = opts.db || level(dbDir, {valueEncoding: 'json'})
+  if (!opts.db) var dbDir = path.join(opts.home || require('os-homedir')(), '.peer-status.db')
+  self.db = opts.db || require('level-party')(dbDir, {valueEncoding: 'json'})
   self.core = hypercore(self.db)
 
   function open (cb) {
@@ -52,7 +50,7 @@ PeerStatus.prototype._open = function (cb) {
     self._feed.open(function (err) {
       if (err) return cb(err)
       if (!self._feed.blocks) return done()
-      self._feed.get(0, function (err, data) {
+      self._feed.get(Math.max(self._feed.blocks - 1, 1), function (err, data) {
         if (err) return cb(err)
         self.status = JSON.parse(data.toString())
         done()
