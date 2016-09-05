@@ -1,6 +1,6 @@
 {
   "name": "peer-status-feed",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Share a status feed and subscribe to peer feeds.",
   "main": "index.js",
   "scripts": {
